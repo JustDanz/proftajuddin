@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Arsip Naskah Kuno | Prof. Dr. Muhammad Tajuddin</title>
+
+    <!-- Bootstrap 4 + Font Awesome 4.7 via CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Lightbox2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
+    <!-- Custom Archive CSS (tetap) -->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom-archive.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+    <style>
+        /* ============================================
+           GLOBAL & RESET
+           ============================================ */
+        :root {
+            --color-ivory: #f8f3e9;
+            --color-gold: #b8860b;
+            --color-maroon: #6b2d2d;
+            --color-charcoal: #2c2c2c;
+            --color-overlay: rgba(0, 0, 0, 0.6);
+            --font-base: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--color-ivory);
+            font-family: var(--font-base);
+            padding-top: 70px;
+            color: #333;
+        }
+
+        /* ============================================
+           NAVBAR
+           ============================================ */
+        .navbar-archive {
+            z-index: 99999 !important;
+            background-color: var(--color-charcoal) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+        }
+        .navbar-archive .nav-link {
+            color: #ddd !important;
+            font-weight: 500;
+            padding: 0.75rem 1rem !important;
+            transition: color 0.3s, background 0.3s;
+            border-radius: 4px;
+        }
+        .navbar-archive .nav-link:hover,
+        .navbar-archive .nav-link.active {
+            color: var(--color-gold) !important;
+            background: rgba(255,215,0,0.08);
+        }
+        .navbar-archive .dropdown-menu {
+            background-color: var(--color-charcoal);
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            margin-top: 6px;
+        }
+        .navbar-archive .dropdown-item {
+            color: #ddd;
+            padding: 0.6rem 1.5rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .navbar-archive .dropdown-item:hover {
+            background-color: var(--color-gold);
+            color: #fff;
+        }
+        .navbar-archive .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.5rem;
+        }
+        .navbar-archive .navbar-toggler .fa {
+            color: var(--color-ivory);
+            font-size: 1.8rem;
+        }
+        .navbar-brand img {
+            height: 45px;
+            width: auto;
+        }
+
+        /* ============================================
+           HERO CAROUSEL
+           ============================================ */
+        .hero-carousel .carousel-item {
+            height: 92vh;
+            min-height: 480px;
+            background-color: #1a1a1a;
+        }
+        .hero-carousel .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--color-overlay);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .carousel-caption-custom {
+            max-width: 720px;
+            color: #fff;
+            padding: 30px 40px;
+            border-radius: 16px;
+            background: rgba(0,0,0,0.35);
+            backdrop-filter: blur(8px);
+            border-left: 5px solid var(--color-gold);
+            animation: fadeInUp 0.6s ease;
+        }
+        .carousel-caption-custom h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        .carousel-caption-custom p {
+            font-size: 1.2rem;
+            margin-bottom: 28px;
+            opacity: 0.9;
+        }
+        .btn-gold {
+            display: inline-block;
+            padding: 14px 40px;
+            background-color: var(--color-gold);
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--color-gold);
+        }
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--color-gold);
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(184,134,11,0.3);
+        }
+        .carousel-control-prev, .carousel-control-next {
+            width: 50px; height: 50px;
+            top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.3);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        .carousel-control-prev { left: 20px; }
+        .carousel-control-next { right: 20px; }
+        .carousel-control-prev:hover, .carousel-control-next:hover {
+            background: rgba(184,134,11,0.6);
+        }
+        .carousel-control-prev .fa, .carousel-control-next .fa {
+            font-size: 2.2rem;
+            color: var(--color-gold);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================
+           SECTION TITLE
+           ============================================ */
+        .section-title {
+            margin-bottom: 2.5rem;
+        }
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--color-gold);
+            border-radius: 4px;
+        }
+        .section-title.text-left h2::after {
+            left: 0;
+        }
+        .section-title.text-center h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* ============================================
+           PROFIL CARD
+           ============================================ */
+        .profile-card {
+            background: #fff;
+            padding: 35px 30px;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+            border-left: 6px solid var(--color-gold);
+            transition: box-shadow 0.3s;
+        }
+        .profile-card:hover {
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        }
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 30px;
+        }
+        .profile-item {
+            border-bottom: 1px solid #f0ece6;
+            padding-bottom: 10px;
+        }
+        .profile-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #999;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+        .profile-detail {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #222;
+        }
+
+        /* ============================================
+           TIMELINE
+           ============================================ */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            padding-bottom: 28px;
+            border-left: 3px solid var(--color-gold);
+        }
+        .timeline-item:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 4px;
+            width: 20px;
+            height: 20px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px var(--color-gold);
+        }
+        .timeline-date {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-maroon);
+        }
+        .timeline-desc {
+            color: #555;
+        }
+
+        /* ============================================
+           GALERI
+           ============================================ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            aspect-ratio: 1/1;
+            background: #eee;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.30);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-icon {
+            font-size: 2.8rem;
+            color: #fff;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer-archive {
+            background-color: var(--color-charcoal);
+            color: #ccc;
+            padding: 40px 0 20px;
+            text-align: center;
+            border-top: 3px solid var(--color-gold);
+            margin-top: 40px;
+        }
+        .footer-archive .social-icons a {
+            display: inline-block;
+            width: 40px; height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            color: #ccc;
+            margin: 0 6px;
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+        .footer-archive .social-icons a:hover {
+            background: var(--color-gold);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .footer-bottom p {
+            margin: 20px 0 0;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 992px) {
+            .profile-grid { grid-template-columns: 1fr; }
+            .carousel-caption-custom h2 { font-size: 2rem; }
+            .page-hero-title { font-size: 2.5rem; }
+        }
+        @media (max-width: 576px) {
+            .hero-carousel .carousel-item { height: 70vh; }
+            .carousel-caption-custom h2 { font-size: 1.5rem; }
+            .carousel-caption-custom p { font-size: 0.9rem; }
+            .btn-gold { padding: 10px 24px; font-size: 0.8rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .page-hero { height: 40vh; min-height: 200px; }
+            .page-hero-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Pastikan tidak ada overlay mengganggu -->
+
+    <!-- Header / Navbar -->
+    <header id="header-wrap">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-archive">
+            <div class="container">
+                <a href="index.html" class="navbar-brand">
+                    <img src="assets/img/logo.png" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa fa-bars"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link active" href="index.html">Beranda</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="naskahDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Naskah Kuno
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="naskahDropdown">
+                                <a class="dropdown-item" href="naskah/1.html">Lontar Sasak</a>
+                                <a class="dropdown-item" href="naskah/2.html">Kitab Melayu</a>
+                                <a class="dropdown-item" href="naskah/3.html">Cerita Rakyat</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aksara.html">Aksara Sasak</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Materi Kuliah</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Penelitian</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Carousel -->
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
+        <div class="carousel-inner hero-carousel">
+            <div class="carousel-item active">
+                <img src="storage/slider/R2S5VpgkzjWGMfweKb7ijugR4GE3gsNbwOnBMCCD.jpg" alt="Manuskrip Sasak">
+                <div class="hero-overlay">
+                    <div class="carousel-caption-custom">
+                        <h2>Warisan Digital Nusantara</h2>
+                        <p>Eksplorasi dan pelestarian manuskrip kuno, Lontar Sasak, dan khazanah budaya bangsa.</p>
+                        <a href="#about" class="btn-gold">Jelajahi Profil</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="storage/slider/dqxHwPU4ZhdAzFc5ixeforl55n8W4htW1hmNvP0F.jpg" alt="Kitab Melayu">
+                <div class="hero-overlay">
+                    <div class="carousel-caption-custom">
+                        <h2>Kajian Naskah Kuno</h2>
+                        <p>Mengungkap sejarah, tradisi, dan kearifan lokal melalui digitalisasi literatur masa lampau.</p>
+                        <a href="naskah/1.html" class="btn-gold">Lihat Koleksi Lontar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="storage/slider/9w8NsWZaxurX9N8KC9NhFhAVeH8iRdQWQRxUGsuJ.jpg" alt="Aksara">
+                <div class="hero-overlay">
+                    <div class="carousel-caption-custom">
+                        <h2>Aksara &amp; Kebudayaan</h2>
+                        <p>Mendalami tata tulis dan nilai-nilai luhur yang terukir dalam lembaran aksara kuno.</p>
+                        <a href="aksara.html" class="btn-gold">Pelajari Aksara Sasak</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="storage/slider/4ciLangpSXLhkEWlHqna7dxs6lEI5AuZgBPzNCEc.jpg" alt="Lontar">
+                <div class="hero-overlay">
+                    <div class="carousel-caption-custom">
+                        <h2>Digitalisasi Lontar Sasak</h2>
+                        <p>Menyelamatkan arsip fisik menjadi metadata digital untuk generasi mendatang.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="storage/slider/dwRjviJfHl4R7qQurXIqKuA5PcUsjsb6fpfGErw2.jpg" alt="Arsip Budaya">
+                <div class="hero-overlay">
+                    <div class="carousel-caption-custom">
+                        <h2>Riset &amp; Publikasi Akademik</h2>
+                        <p>Dedikasi dalam penelitian sistem informasi dan pelestarian teknologi informasi budaya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+            <span class="fa fa-angle-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+            <span class="fa fa-angle-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!-- Data Diri Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Profil Akademik</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img class="img-fluid rounded shadow" src="assets/img/about/about-1.jpg" alt="Prof. Dr. Muhammad Tajuddin">
+                </div>
+                <div class="col-lg-8">
+                    <div class="profile-card">
+                        <div class="profile-grid">
+                            <div class="profile-item">
+                                <span class="profile-title">Nama Lengkap</span>
+                                <span class="profile-detail">Prof. Dr. Muhammad Tajuddin, M.Si</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="profile-title">Jenis Kelamin</span>
+                                <span class="profile-detail">Laki-Laki</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="profile-title">Agama</span>
+                                <span class="profile-detail">Islam</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="profile-title">NIP / NIDN</span>
+                                <span class="profile-detail">19601122 199501 1 001 / 0022116005</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="profile-title">Tempat, Tanggal Lahir</span>
+                                <span class="profile-detail">Monjok Pemamoran, Mataram, 22-11-1960</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="profile-title">Email</span>
+                                <span class="profile-detail">judin61@yahoo.com</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="profile-title">Telepon / HP</span>
+                                <span class="profile-detail">(0370) 634583 / 081 2377 2396</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="profile-title">Alamat Kantor</span>
+                                <span class="profile-detail">Jl. Ismail Marzuki Mataram 83131</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="profile-title">Telepon / Fax Kantor</span>
+                                <span class="profile-detail">(0370) 634498 / fax (0370) 638369</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="profile-title">Alamat Rumah</span>
+                                <span class="profile-detail">Jl. Ade Irma Suryani 56 Monjok Mataram 83122</span>
+                            </div>
+                            <div class="profile-item" style="grid-column: 1 / -1;">
+                                <span class="profile-title">Mata Kuliah Diampu</span>
+                                <span class="profile-detail">Sistem Informasi, Riset Teknologi Informasi, Proyek Sistem Informasi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Pendidikan & Penghargaan -->
+    <section class="section-padding timeline-section">
+        <div class="container">
+            <div class="row">
+                <!-- Pendidikan -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="section-title text-left mb-4">
+                        <h2>Riwayat Pendidikan</h2>
+                    </div>
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2009 - 2012</div>
+                            <div class="timeline-title">Program Doktor (S3)</div>
+                            <div class="timeline-desc">Ilmu Administrasi Bisnis, Fak. Ilmu Administrasi, Universitas Brawijaya Malang. <strong>Predikat Cumlaude</strong></div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1998 - 2000</div>
+                            <div class="timeline-title">Program Pascasarjana (S2)</div>
+                            <div class="timeline-desc">Universitas Brawijaya Malang. <strong>Predikat Cumlaude</strong></div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1980 - 1986</div>
+                            <div class="timeline-title">Program Sarjana (S1)</div>
+                            <div class="timeline-desc">Fakultas Ekonomi, Universitas Mataram.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1977 - 1980</div>
+                            <div class="timeline-title">Sekolah Menengah Atas</div>
+                            <div class="timeline-desc">SMA Negeri Mataram</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1974 - 1976</div>
+                            <div class="timeline-title">Sekolah Menengah Pertama</div>
+                            <div class="timeline-desc">SMP Negeri 2 Mataram</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1968 - 1973</div>
+                            <div class="timeline-title">Sekolah Dasar</div>
+                            <div class="timeline-desc">SD Negeri Monjok</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Penghargaan -->
+                <div class="col-lg-6">
+                    <div class="section-title text-left mb-4">
+                        <h2>Penghargaan &amp; Capaian</h2>
+                    </div>
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-date">03-04 Maret 2019</div>
+                            <div class="timeline-title">Presenter Terbaik</div>
+                            <div class="timeline-desc">Seminar Hasil Pengabdian Masyarakat Mono Tahun di Kuta Bali, Direktorat Penelitian dan Pengabdian pada Masyarakat Dirjen Dikti.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2014</div>
+                            <div class="timeline-title">Presenter Terbaik</div>
+                            <div class="timeline-desc">Seminar Hasil Penelitian Kompetitif Nasional, Direktorat Penelitian dan Pengabdian pada Masyarakat Dirjen Dikti.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2013</div>
+                            <div class="timeline-title">Piagam Penghargaan</div>
+                            <div class="timeline-desc">Presenter Terbaik KNSI 2013 ITB.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2012</div>
+                            <div class="timeline-title">Piagam Penghargaan</div>
+                            <div class="timeline-desc">Lulus Strata Tiga (S3) dengan Predikat Cumlaude.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2000</div>
+                            <div class="timeline-title">Piagam Penghargaan</div>
+                            <div class="timeline-desc">Lulus Strata Dua (S2) dengan Predikat Cumlaude.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri & Dokumentasi -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeri &amp; Dokumentasi</h2>
+            </div>
+            <div class="gallery-grid">
+                <a href="assets/img/gallery/img-1.jpg" class="gallery-item" data-lightbox="gallery" data-title="Dokumentasi 1">
+                    <img src="assets/img/gallery/img-1.jpg" alt="Dokumentasi 1">
+                    <div class="gallery-overlay">
+                        <span class="fa fa-search gallery-icon"></span>
+                    </div>
+                </a>
+                <a href="assets/img/gallery/img-2.jpg" class="gallery-item" data-lightbox="gallery" data-title="Dokumentasi 2">
+                    <img src="assets/img/gallery/img-2.jpg" alt="Dokumentasi 2">
+                    <div class="gallery-overlay">
+                        <span class="fa fa-search gallery-icon"></span>
+                    </div>
+                </a>
+                <a href="assets/img/gallery/img-3.jpg" class="gallery-item" data-lightbox="gallery" data-title="Dokumentasi 3">
+                    <img src="assets/img/gallery/img-3.jpg" alt="Dokumentasi 3">
+                    <div class="gallery-overlay">
+                        <span class="fa fa-search gallery-icon"></span>
+                    </div>
+                </a>
+                <a href="assets/img/gallery/img-4.jpg" class="gallery-item" data-lightbox="gallery" data-title="Dokumentasi 4">
+                    <img src="assets/img/gallery/img-4.jpg" alt="Dokumentasi 4">
+                    <div class="gallery-overlay">
+                        <span class="fa fa-search gallery-icon"></span>
+                    </div>
+                </a>
+                <a href="assets/img/gallery/img-5.jpg" class="gallery-item" data-lightbox="gallery" data-title="Dokumentasi 5">
+                    <img src="assets/img/gallery/img-5.jpg" alt="Dokumentasi 5">
+                    <div class="gallery-overlay">
+                        <span class="fa fa-search gallery-icon"></span>
+                    </div>
+                </a>
+                <a href="assets/img/gallery/img-6.jpg" class="gallery-item" data-lightbox="gallery" data-title="Dokumentasi 6">
+                    <img src="assets/img/gallery/img-6.jpg" alt="Dokumentasi 6">
+                    <div class="gallery-overlay">
+                        <span class="fa fa-search gallery-icon"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-archive">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="assets/img/logo.png" alt="Logo" style="height: 50px; filter: brightness(0) invert(1); margin-bottom: 20px;">
+                    <div class="social-icons">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>&copy; 2026 Arsip Digital Naskah Kuno Prof. Dr. Muhammad Tajuddin. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://chshared.com/assets/js/lightbox2.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Bulletproof mobile navbar toggler
+            $('.navbar-toggler').on('click', function(e) {
+                e.stopPropagation();
+                var target = $(this).data('target') || '#main-navbar';
+                $(target).toggleClass('show');
+            });
+        });
+    </script>
+</body>
+</html>
