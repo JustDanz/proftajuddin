@@ -1,0 +1,13 @@
+/* ==========================================================================
+   koleksi.css — shim yang mengarahkan ke design system utama
+   File ini hanya diperlukan karena naskah/*.html mengimportnya.
+   Semua style sudah ada di custom-archive.css.
+   ========================================================================== */
+
+/*
+ * Semua styles halaman koleksi/list sudah dihandle oleh:
+ *   ../assets/css/custom-archive.css
+ *
+ * File ini sengaja dikosongkan agar tidak ada duplikasi.
+ * Jika perlu override khusus halaman list, tambahkan di sini.
+ */

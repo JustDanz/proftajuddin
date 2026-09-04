@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   
 <!-- Mirrored from tajuddin.web.id/detail-naskah/25?page=156 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Aug 2026 07:25:59 GMT -->
@@ -40,7 +40,7 @@
                     <img src="../assets/img/logo.png" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="fa fa-bars" style="color:var(--color-ivory);"></span>
+                    <span class="fa fa-bars"></span>
                 </button>
                 
                 <div class="collapse navbar-collapse" id="main-navbar">
@@ -76,7 +76,7 @@
 
     <!-- content Section Start -->
       <section class="detail-section">
-    <div class="container" style="padding-top:10px;padding-bottom:10px;">
+    <div class="container" >
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto py-100">
           <div class="detail-card">
@@ -170,7 +170,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <img src="../assets/img/logo.png" alt="Logo" style="height: 50px; filter: brightness(0) invert(1); margin-bottom: 20px;">
+                    <img src="../assets/img/logo.png" alt="Logo" style="height: 50px; margin-bottom: 18px;">
                     <div class="social-icons">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
@@ -229,7 +229,11 @@
             $.ajax({
                 url : url  
             }).done(function (data) {
-                $('.konten_naskah').html(data);  
+                var doc = new DOMParser().parseFromString(data, "text/html");
+                var newContent = $(doc).find('.konten_naskah').html();
+                if (newContent) {
+                    $('.konten_naskah').html(newContent);
+                }
             }).fail(function () {
                 alert('KontenNaskah could not be loaded.');
             });
